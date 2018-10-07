@@ -8,4 +8,4 @@ CREATE TABLE signatures (
 );
 
 
-INSERT INTO signatures (first, last)
+INSERT INTO signatures (first, last, signature)

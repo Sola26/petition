@@ -112,7 +112,7 @@ draw();
 //     } else {
 //       console.log("sorryyyy!");
 //       $("#myCanvas").append(
-//         "<h4>Sorry bro, you have to fill the form first</h4>"
+//         "<h4>Sorry, you have to fill the form first!</h4>"
 //       );
 //     }
 //   },
@@ -124,13 +124,10 @@ $("#submit").on("click", function(e) {
   var userLastName = $(".last").val();
   var signature = $("#hidden").val();
   if (userFirstName && userLastName && signature) {
-    form.submit();
+    $("#form").submit();
   } else {
     console.log("baaaaaad!!");
 
     $("#form").append("<h4>Sorry, you have to fill the form first!</h4>");
   }
 });
-
-// if button is submited check the value of 3 inputs.length
-// if they are not filled res.send jquery message you missed up!
