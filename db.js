@@ -20,7 +20,7 @@ exports.getData = function getData(first, last, signature) {
 //     console.log(results.rows);``
 //   })
 //
-exports.allSupporter = function allSupporter() {
+exports.signers = function signers() {
     return db.query(`SELECT first, last FROM save ORDER By id ASC`);
 };
 
