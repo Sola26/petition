@@ -1,4 +1,4 @@
-<div id="register">
+<div class="view" id="register">
     <h1>please register</h1>
     <form method="post">
         {{#if error}}
@@ -9,6 +9,7 @@
         <input placeholder="email"type="text" name="email">
         <input placeholder="password"type="text" name="password">
         <button type="submit" name="register">register</button>
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
 
 
         </form>

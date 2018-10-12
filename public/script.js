@@ -26,7 +26,7 @@ function init() {
   canvas.addEventListener(
     "mousedown",
     function(e) {
-      console.log("down");
+
       findxy("down", e);
     },
     false
@@ -37,8 +37,8 @@ function init() {
       var sigUrl = document.getElementById("myCanvas").toDataURL();
       $("#hidden").val(sigUrl);
       // $(".hidden").val($("#myCanvas").toDataURL());
-      console.log(sigUrl);
-      console.log("up");
+
+
       findxy("up", e);
     },
     false
@@ -55,7 +55,7 @@ function init() {
 }
 
 function draw() {
-  console.log("draw");
+
   ctx.beginPath();
   ctx.moveTo(prevX, prevY);
   ctx.lineTo(currX, currY);

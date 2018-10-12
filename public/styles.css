@@ -5,3 +5,7 @@
 .hidden {
   display: none;
 }
+
+.layout {
+    background-color: rgb(245, 169, 146)
+}
