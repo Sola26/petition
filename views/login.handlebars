@@ -1,15 +1,20 @@
 <div class="view">
 
+<h1 class="keep">Keep stores opened on sundays!</h1>
+<h1 class="pleaselog">please log into the petition</h1>
+<form id="login" method="post">
 
-<h1>please log into my petition</h1>
-<!-- <img src="https://pics.me.me/when-you-your-cousin-come-back-from-a-walk-12089980.png" alt=""> -->
-
-<form method="post">
     <input placeholder="email" name="email" type="text">
     <input placeholder="password" name="password" type="text">
     <button type="submit">Submit</button>
-</form>
-
-<h3>not a memeber yet? <a href="/register">Please register :)</a></h3>
-</div>
     <input type="hidden" name="_csrf" value="{{csrfToken}}">
+
+</form>
+{{#if error}}
+            <div class="errorinlogin">ooops somthing is not right!</div>
+        {{/if}}
+
+
+
+<h3 class="notamember">not a memeber yet? <a href="/register">Please register :)</a></h3>
+</div>

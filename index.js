@@ -1,4 +1,4 @@
-const express = require("express");
+ const express = require("express");
 const app = express();
 const hb = require("express-handlebars");
 const bodyParser = require("body-parser");
@@ -53,7 +53,7 @@ app.get('/', (req, res) => {
 
 function checkForUser(req, res, next) {
     if (!req.session.sigId) {
-        res.redirect('/register');
+        res.redirect('/login');
     } else {
         next();
     }
@@ -108,10 +108,6 @@ app.post("/register", (req, res, next) => {
                 })
                 .catch(err => {
                     console.log('err in first catch: ', err);
-                    res.render("register", {
-                        layout: "main",
-                        error: "error"
-                    });
                 });
         })
         .catch(err => {
@@ -147,7 +143,7 @@ app.post('/login', (req, res) => {
                 .then((getPassword) => {
                 if (getPassword) {
                     req.session.loggedIn = true;
-                    res.redirect('/profile/edit');
+                    res.redirect('/petition');
                 } else {
                     res.render('login', {
                         layout: 'main',
@@ -155,11 +151,15 @@ app.post('/login', (req, res) => {
                     });
                 }
             }).catch((err) => {
-                console.log(err);
+                console.log("err in first catch: ", err);
             });
         })
         .catch((err) => {
-            console.log(err);
+            console.log("err in last catch login post: ", err);
+            res.render('login', {
+                layout: 'main',
+                error: 'error'
+            })
         });
 });
 
@@ -184,7 +184,7 @@ app.get("/profile", checkIfLoggedin, (req, res) => {
 });
 
 
-app.post("/profile", (req, res) => {
+app.post("/profile", checkIfLoggedin, (req, res) => {
    db.insertNewProfile(
        req.body.age,
        req.body.city,
@@ -228,7 +228,7 @@ app.get('/petition', checkIfLoggedin, (req, res) => {
 
 
 
-app.post('/petition', (req, res) => {
+app.post('/petition', checkIfLoggedin, (req, res) => {
     db.setSig(req.body.canvas, req.session.userId)
         .then(result => {
 
@@ -237,9 +237,10 @@ app.post('/petition', (req, res) => {
             res.redirect('/signed');
         })
         .catch(err => {
-            console.log("ERROR in the setSignature function: ", err),
+            console.log("ERROR in the setSig function: ", err),
             res.render('petition', {
                 layout: 'main',
+                img: img,
                 errorMessage: 'ooooops...sign first!'
             });
         });
@@ -253,7 +254,7 @@ app.post('/petition', (req, res) => {
 //////////////////////petition//////////////////////
 
 
-app.get("/profile/edit", checkIfLoggedin, (req, res) => {
+app.get("/edit", checkIfLoggedin, (req, res) => {
 
    db.getFullProfile(req.session.userId).then(data => {
        res.render("editview", {
@@ -264,7 +265,7 @@ app.get("/profile/edit", checkIfLoggedin, (req, res) => {
    });
 });
 
-app.post("/profile/edit", (req, res) => {
+app.post("/edit", checkIfLoggedin, (req, res) => {
    if (req.body.password) {
        db.hashPassword(req.body.password)
            .then(hash => {
@@ -365,7 +366,14 @@ app.get("/signed", checkIfLoggedin, (req, res) => {
                numOfSigners: numOfSigners,
                sig: sig
            });
-       });
+       })
+       .catch(err => {
+           console.log("err: ", err);
+       })
+       .catch(err => {
+           console.log("err: ", err);
+           res.redirect("/")
+       })
    });
 });
 
@@ -408,6 +416,10 @@ db.allSupporter().then(result => {
 
 //////////////////////signers//////////////////////
 
+
+
+/////////////////signers by city ///////////////////
+
 app.get("/supporters/:city", checkIfLoggedin, (req, res) => {
    db.allSupporterByCity(req.params.city)
        .then(data => {
@@ -419,13 +431,21 @@ app.get("/supporters/:city", checkIfLoggedin, (req, res) => {
                layout: "main",
                supporter: supporter
            });
+       }).catch(err => {
+           console.log("err: ", err);
        });
 });
+
+/////////////////signers by city ///////////////////
+
 
 app.get('/logout', (req, res) => {
     req.session = null;
     res.redirect('/login')
 })
+
+
+
 
 
 

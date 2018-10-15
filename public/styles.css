@@ -1,11 +1,272 @@
-#myCanvas {
-  border: 1px solid black;
-}
+
 
 .hidden {
   display: none;
 }
 
-.layout {
-    background-color: rgb(245, 169, 146)
+* {
+  background-color: rgb(203, 230, 233);
+}
+.city {
+     background-color: rgb(203, 230, 233);
+}
+
+h1 {
+  position: absolute;
+  top: 17%;
+  left: 20%;
+  font-size: 50px;
+  font-family: monospace;
+  color: rgb(245, 32, 45);
+}
+
+.tellUsMore {
+    position: absolute;
+    top: 20%;
+    left: 25%;
+    font-size: 30px;
+    font-family: monospace;
+    color: rgb(245, 32, 45);
+}
+
+.login {
+  position: absolute;
+  top: 80%;
+  left: 31%;
+  font-size: 16px;
+  font-family: monospace;
+  color: rgb(245, 32, 45);
+}
+
+
+.img {
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    width: 500px;
+    hight: 600px;
+    top: 50px,
+    left: 50px,
+}
+
+
+
+
+.button a:hover {
+  color: rgb(245, 32, 45);
+}
+
+.errorinreg {
+    color: rgb(245, 32, 45);
+    position: absolute;
+    top: 76%;
+    left: 33%;
+    font-family: monospace;
+
+}
+
+
+.errorinlogin {
+    color: rgb(245, 32, 45);
+    position: absolute;
+    top: 70%;
+    left: 36%;
+    font-family: monospace;
+
+}
+
+.keep {
+    position: absolute;
+    top: 4%;
+    left: 17%;
+    font-size: 50px;
+    font-family: monospace;
+    color: rgb(245, 32, 45);
+}
+
+.pleasereg {
+    position: absolute;
+    top: 35%;
+    left: 35%;
+    font-size: 28px;
+    font-family: monospace;
+    color: rgb(97, 50, 255);
+}
+
+.pleaselog {
+    position: absolute;
+    top: 35%;
+    left: 28%;
+    font-size: 28px;
+    font-family: monospace;
+    color: rgb(97, 50, 255);
+}
+
+.forms {
+    position: absolute;
+    width: 100px;
+    top: 40%;
+    left: 40%;
+    white-space: pre-line;
+    color: white;
+}
+
+.notamember {
+    position: absolute;
+    top: 73%;
+    left: 30%;
+    font-size: 18px;
+    font-family: monospace;
+    color: rgb(97, 50, 255);
+}
+
+#login {
+    position: absolute;
+    width: 100px;
+    top: 48%;
+    left: 40%;
+    white-space: pre-line;
+    color: white;
+}
+
+.ifyou {
+    position: absolute;
+    top: 27%;
+    left: 10%;
+    font-size: 17px;
+    font-family: monospace;
+    color: rgb(97, 50, 255);
+}
+
+#myCanvas {
+  border: 3px solid rgb(245, 32, 45);
+  position: absolute;
+  top: 40%;
+  left: 17%;
+}
+
+#submit {
+    position: absolute;
+    top: 89%;
+    left: 68%;
+    width: 100px;
+    font-family: monospace;
+    color: rgb(97, 50, 255);
+
+}
+#submitP {
+    position: absolute;
+    top: 89%;
+    left: 80%;
+    width: 100px;
+    height: 40px;
+    font-family: monospace;
+    color: rgb(97, 50, 255);
+
+}
+.signout {
+    position: absolute;
+    top: 4%;
+    left: 80%;
+    width: 100px;
+    color: rgb(245, 32, 45);
+    font-family: monospace;
+}
+
+.thankyou {
+    position: absolute;
+    top: 20%;
+    left: 11%;
+    font-size: 40px;
+    font-family: monospace;
+    color: rgb(245, 32, 45);
+}
+
+.sig {
+    position: absolute;
+    top: 20%;
+    left: 37%;
+}
+
+.deletesig {
+
+    position: absolute;
+    top: 72%;
+    left: 11%;
+    width: 177px;
+    height: 30px;
+    color: rgb(245, 32, 45);
+    font-family: monospace;
+}
+
+.edit {
+    color: rgb(245, 32, 45);
+    position: absolute;
+    top: 79%;
+    left: 11%;
+    width: 177px;
+    height: 30px;
+    font-family: monospace;
+}
+
+.seeothers {
+    color: rgb(245, 32, 45);
+    position: absolute;
+    top: 85%;
+    left: 11%;
+    width: 177px;
+    height: 30px;
+    font-family: monospace;
+}
+
+#form {
+    position: absolute;
+    width: 100px;
+    top: 18%;
+    left: 40%;
+    white-space: nowrap;
+    color: white;
+}
+
+#edit {
+    position: absolute;
+    top: 15%;
+    left: 11%;
+    font-size: 40px;
+    font-family: monospace;
+    color: rgb(245, 32, 45);
+    width: 300px;
+}
+
+.signers {
+    position: absolute;
+    font-size: 20px;
+    top: 20%;
+    left: 40%;
+    font-family: monospace;
+    color: rgb(245, 32, 45);
+
+}
+
+.heroes {
+    position: absolute;
+    top: 20%;
+    left: 11%;
+    font-size: 40px;
+    font-family: monospace;
+    color: rgb(245, 32, 45);
+    width: 200px;
+}
+
+.gotopetition {
+    position: absolute;
+    top: 4%;
+    left: 66%;
+    width: 180px;
+    color: rgb(245, 32, 45);
+    font-family: monospace;
+}
+
+.si {
+    background-color: rgb(203, 230, 233);
 }

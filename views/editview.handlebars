@@ -2,24 +2,30 @@
 
 
 
-   <h1>Edit your profile</h1>
+   <h1 id="edit">Edit your profile</h1>
    <form id='form'  method="post">
        <p>first name</p>
-       <input type="text" name="first" class="user-first-name" placeholder="First Name" value="{{data.first_name}}">
+       <input type="text" name="first" class="user-first-name" value="{{data.first_name}}">
        <p>last name</p>
-       <input type="text" name="last" class="user-last-name" placeholder="Last Name" value="{{data.last_name}}">
+       <input type="text" name="last" class="user-last-name" value="{{data.last_name}}">
        <p>email</p>
-       <input type="text" name="email" class="user-email" placeholder="email" value="{{data.email}}">
+       <input type="text" name="email" class="user-email" value="{{data.email}}">
        <p>password</p>
-       <input type="text" name="password" class="user-password" placeholder="Password" value="">
+       <input type="text" name="password" class="user-password" value="">
        <input type="hidden" name="_csrf" value="{{csrfToken}}">
        <p>age</p>
-       <input type="text" name="age" class="user-age" placeholder="age" value="{{data.age}}">
+       <input type="text" name="age" class="user-age"  value="{{data.age}}">
        <p>city</p>
-       <input type="text" name="city" class="user-city" placeholder="city" value="{{data.city}}">
+       <input type="text" name="city" class="user-city" value="{{data.city}}">
        <p>private website</p>
-       <input type="text" name="url" class="user-url" placeholder="private website" value="{{data.url}}">
-       <button id="submit" type="submit" name="button">update</button>
+       <input type="text" name="url" class="user-url" value="{{data.url}}">
+       <button id="update" type="submit" name="button">update</button>
     </form>
 
+
+
+<form class="" action="/logout" method="get">
+    <button class="signout" name="button">signout</button>
+
+</form>
 </div>

@@ -1,18 +1,28 @@
-<div class="view">
 
 
-<h1>PETITION!!!!</h1>
 
-<form id="form" method="POST">
-    <p>{{errorMessage}}</p>
+<h1 class="keep">Keep stores opened on sundays!</h1>
+<p class="ifyou">if you agree that we need groceries on sundays too, please join us and sign this awesome petition.</p>
+
+<!-- <img class="img" src="https://fotostrasse.com/wp-content/uploads/2014/07/Checkpoint-Charlie-Why-you-shouldnt-visit-it.jpg" alt="street"> -->
+
+<form method="POST">
+
 
     <input id="hidden" type="hidden" name="canvas">
     <input type="hidden" name="signature" value="">
-    <input type="hidden" name="_csrf" value="{{csrfToken}}">
-    <canvas id="myCanvas" width="300" height="100"></canvas>
 
+    <canvas id="myCanvas" width="700" height="300"></canvas>
 
+<input type="hidden" name="_csrf" value="{{csrfToken}}">
 
-<button id="submit">submit</button>
+<button id="submitP">submit</button>
     </form>
-</div>
+
+
+<form class="" action="/logout" method="get">
+    <button class="signout"name="button">signout</button>
+
+
+</form>
+<p>{{errorMessage}}</p>

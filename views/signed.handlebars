@@ -1,12 +1,21 @@
 <div class="view">
 
 
-<h1>Thank you for signing</h1>
-<!-- <img src="https://pics.me.me/when-you-your-cousin-come-back-from-a-walk-12089980.png" alt="highman"> -->
-<p>{{message}}<p/>
+<h1 class="thankyou">Thank you <p>{{message}}<p/> for signing</h1>
+
+<div class="sig">
+
 
 <img src="{{sig}}" />
-
-<p><a href="/signers">See all {{numOfSigners}} the other heroes!</a></p>
 </div>
+
+<button class="seeothers"><a href="/signers">See all {{numOfSigners}} the other heroes!</a></button>
+<button class="edit"type="button" name="edit"> <a href="/edit">edit my profile</a> </button>
+<button class="deletesig" type="button" name="delete"> <a href="/petition">delete my signature</a> </button>
     <input type="hidden" name="_csrf" value="{{csrfToken}}">
+</div>
+
+<form class="" action="/logout" method="get">
+    <button class="signout" name="button">signout</button>
+
+</form>

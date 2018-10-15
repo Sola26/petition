@@ -1,5 +1,5 @@
-<h1 class="heroes">And the heroes are :</h1>
-<div class="signers">
+<div class="city">
+
 
 
 <ol>
@@ -16,15 +16,17 @@
        {{/supporter}}
    </ol>
 
+   <input type="hidden" name="_csrf" value="{{csrfToken}}">
 
-
-       <input type="hidden" name="_csrf" value="{{csrfToken}}">
-</div>
 <form class="gotopetition" action="/petition" method="get">
-    <button name="button">go back to the petition</button>
+<button name="button">go back to the petition</button>
 
 </form>
 <form class="signout" action="/logout" method="get">
-    <button name="button">signout</button>
+<button class="signout" name="button">signout</button>
 
 </form>
+
+
+</div>
+</div>

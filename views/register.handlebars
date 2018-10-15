@@ -1,17 +1,23 @@
 <div class="view" id="register">
-    <h1>please register</h1>
+    <h1 class="keep">Keep stores opened on sundays!</h1>
+
     <form method="post">
         {{#if error}}
-                    <div class="error">ooops something is not right!</div>
+                    <div class="errorinreg">ooops you gotta fill out the ... first!</div>
                 {{/if}}
+        <div class="forms">
+
+
         <input placeholder="firstname"type="text" name="first">
         <input placeholder="lastname"type="text" name="last">
         <input placeholder="email"type="text" name="email">
         <input placeholder="password"type="text" name="password">
-        <button type="submit" name="register">register</button>
-            <input type="hidden" name="_csrf" value="{{csrfToken}}">
-
-
+        <button class="button" type="submit" name="register">register</button>
+        <input type="hidden" name="_csrf" value="{{csrfToken}}">
+</div>
         </form>
-        <h3>got an account already???? <a href="/login">Please log in</a> </h3>
+
+        <h3 class="login">got an account already?? <a href="/login">Please log in</a> </h3>
+
+            <h1 class="pleasereg">please register</h1>
 </div>

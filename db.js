@@ -1,24 +1,3 @@
-// const spicedPg = require("spiced-pg");
-// // const { dbUser, dbPassword } = require("./secrets");
-// //
-// // const db = spicedPg(
-// //   `postgres:${dbUser}:${dbPassword}@localhost:5432/signatures`
-// // );
-// const bcrypt = require('bcryptjs');
-//
-//
-// let dbUrl;
-//
-// let secrets;
-// if (process.env.NODE_ENV === 'production') {
-//     secrets = process.env;
-//     dbUrl = secrets.DATABASE_URL;
-// } else {
-//     secrets = require('./secrets.json')
-//     dbUrl =`postgres:${secrets.dbUser}:${secrets.dbPassword}@localhost:5432/signatures`;
-// }
-//
-// const db = spicedPg(dbUrl)
 const spicedPg = require("spiced-pg");
 //this when we create a secret.json with password and stuff, for git ignore
 // const { dbUser, dbPassword } = require('./secrets');

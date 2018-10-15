@@ -7,7 +7,7 @@ var canvas,
   currY = 0,
   dot_flag = false;
 
-var x = "black",
+var x = "rgb(97, 50, 255)",
   y = 2;
 
 function init() {
@@ -36,7 +36,7 @@ function init() {
     function(e) {
       var sigUrl = document.getElementById("myCanvas").toDataURL();
       $("#hidden").val(sigUrl);
-      // $(".hidden").val($("#myCanvas").toDataURL());
+
 
 
       findxy("up", e);
@@ -96,49 +96,3 @@ function findxy(res, e) {
 }
 init();
 draw();
-
-// var submit = document.getElementById("submit");
-// submit.addEventListener(
-//   "click",
-//   function(e) {
-//     console.log("click!!");
-//
-//     var userFirstName = $(".first").val();
-//     var userLastName = $(".last").val();
-//     var signature = $("#myCanvas").val();
-//     if (userFirstName && userLastName && signature) {
-//       console.log("good!");
-//       form.submit();
-//     } else {
-//       console.log("sorryyyy!");
-//       $("#myCanvas").append(
-//         "<h4>Sorry, you have to fill the form first!</h4>"
-//       );
-//     }
-//   },
-//   false
-// );
-//
-// $("#submit").on("click", function(e) {
-//   var userFirstName = $(".first").val();
-//   var userLastName = $(".last").val();
-//   var signature = $("#hidden").val();
-//   if (userFirstName && userLastName && signature) {
-//     $("#form").submit();
-//   } else {
-//     console.log("baaaaaad!!");
-//
-//     $("#form").append("<h4>Sorry, you have to fill the form first!</h4>");
-//   }
-// });
-
-// $("#submit").on("click", function(e) {
-//   var signature = $("#hidden").val();
-//   if (signature) {
-//     $("#form").submit();
-//   } else {
-//     console.log("baaaaaad!!");
-//
-//     $("#form").append("<h4>Sorry, you have to fill the form first!</h4>");
-//   }
-// });
