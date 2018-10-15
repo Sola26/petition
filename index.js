@@ -3,7 +3,7 @@ const app = express();
 const hb = require("express-handlebars");
 const bodyParser = require("body-parser");
 const db = require("./db");
-
+const cookieSession = require("cookie-session");
 const csurf = require("csurf");
 
 
@@ -11,7 +11,6 @@ const csurf = require("csurf");
 app.use(bodyParser.urlencoded({ extended: false }));
 
 
-var cookieSession = require("cookie-session");
 app.use(
   cookieSession({
     secret: `I'm always angry.`,
@@ -24,6 +23,9 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.engine("handlebars", hb());
+app.set("view engine", "handlebars");
+app.use(express.static("public"))
 
 ///////////////// to avoid clickjacking /////////////////
 app.use(function(req, res, next) {
@@ -34,9 +36,7 @@ app.use(function(req, res, next) {
 
 
 
-app.engine("handlebars", hb());
-app.set("view engine", "handlebars");
-app.use(express.static("public"));
+;
 
 
 
@@ -176,7 +176,7 @@ app.post('/login', (req, res) => {
 //////////////////////profile//////////////////////
 
 
-app.get("/profile", checkIfLoggedin, (req, res) => {
+app.get("/profile", (req, res) => {
 
     res.render("profile", {
         layout: "main"
@@ -184,7 +184,7 @@ app.get("/profile", checkIfLoggedin, (req, res) => {
 });
 
 
-app.post("/profile", checkIfLoggedin, (req, res) => {
+app.post("/profile", (req, res) => {
    db.insertNewProfile(
        req.body.age,
        req.body.city,
@@ -228,7 +228,7 @@ app.get('/petition', checkIfLoggedin, (req, res) => {
 
 
 
-app.post('/petition', checkIfLoggedin, (req, res) => {
+app.post('/petition', (req, res) => {
     db.setSig(req.body.canvas, req.session.userId)
         .then(result => {
 
@@ -240,7 +240,6 @@ app.post('/petition', checkIfLoggedin, (req, res) => {
             console.log("ERROR in the setSig function: ", err),
             res.render('petition', {
                 layout: 'main',
-                img: img,
                 errorMessage: 'ooooops...sign first!'
             });
         });
@@ -265,7 +264,7 @@ app.get("/edit", checkIfLoggedin, (req, res) => {
    });
 });
 
-app.post("/edit", checkIfLoggedin, (req, res) => {
+app.post("/edit", (req, res) => {
    if (req.body.password) {
        db.hashPassword(req.body.password)
            .then(hash => {
@@ -310,7 +309,7 @@ app.post("/edit", checkIfLoggedin, (req, res) => {
                    req.body.url
                )
                .catch(err => {
-                   console.log("NO");
+                   console.log("err: ", err);
                    throw err;
                })
        ])
@@ -335,19 +334,8 @@ app.post("/edit", checkIfLoggedin, (req, res) => {
 
 
 
-// app.get('/', checkForUser, (req, res) => {
-//
-// })
 
 
-
-
-
-// app.get("/petition", checkForUser, (req, res) => {
-//     db.checkForUser(req.body.user)
-//     .then(results => {
-//         req.session.user =
-//     })
 
 
 
@@ -416,11 +404,15 @@ db.allSupporter().then(result => {
 
 //////////////////////signers//////////////////////
 
+app.get('/logout', (req, res) => {
+    req.session = null;
+    res.redirect('/login')
+})
 
 
 /////////////////signers by city ///////////////////
 
-app.get("/supporters/:city", checkIfLoggedin, (req, res) => {
+app.get("/:city", checkIfLoggedin, (req, res) => {
    db.allSupporterByCity(req.params.city)
        .then(data => {
            console.log(data);
@@ -432,17 +424,13 @@ app.get("/supporters/:city", checkIfLoggedin, (req, res) => {
                supporter: supporter
            });
        }).catch(err => {
-           console.log("err: ", err);
+           console.log("err in signers by city: ", err);
        });
 });
 
 /////////////////signers by city ///////////////////
 
 
-app.get('/logout', (req, res) => {
-    req.session = null;
-    res.redirect('/login')
-})
 
 
 
