@@ -270,3 +270,14 @@ h1 {
 .si {
     background-color: rgb(203, 230, 233);
 }
+
+.delete-signature {
+
+    position: absolute;
+    top: 72%;
+    left: 11%;
+    width: 177px;
+    height: 30px;
+    color: rgb(245, 32, 45);
+    font-family: monospace;
+}

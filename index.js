@@ -370,7 +370,14 @@ app.get("/signed", checkIfLoggedin, (req, res) => {
 
 
 
-
+app.post('/delete-signature', (req, res) => {
+    db.deleteSignature(req.session.userId)
+        .then(results => {
+            res.redirect('/petition');
+        }).catch((err) => {
+            console.log('Error in deleteSignature: ', err.message);
+        });
+});
 
 
 

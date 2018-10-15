@@ -218,3 +218,12 @@ exports.checkPassword = function(textEnteredInLoginForm, hashedPasswordFromDatab
         })
     })
 }
+
+module.exports.deleteSignature = function(user_id) {
+    const q = `
+        DELETE FROM signatures
+        WHERE signatures.user_id = $1;
+    `;
+    const params = [user_id || null];
+    return db.query(q, params);
+};

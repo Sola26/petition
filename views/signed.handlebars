@@ -11,7 +11,10 @@
 
 <button class="seeothers"><a href="/signers">See all {{numOfSigners}} the other heroes!</a></button>
 <button class="edit"type="button" name="edit"> <a href="/edit">edit my profile</a> </button>
-<button class="deletesig" type="button" name="delete"> <a href="/petition">delete my signature</a> </button>
+<form class="" action="/delete-signature" method="post">
+            <button class="delete-signature">Delete my signature</button>
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+        </form>
     <input type="hidden" name="_csrf" value="{{csrfToken}}">
 </div>
 
