@@ -176,7 +176,7 @@ app.post('/login', (req, res) => {
 //////////////////////profile//////////////////////
 
 
-app.get("/profile", (req, res) => {
+app.get("/profile", auth, (req, res) => {
 
     res.render("profile", {
         layout: "main"
@@ -218,7 +218,7 @@ app.post("/profile", (req, res) => {
 
 
 
-app.get('/petition', checkIfLoggedin, (req, res) => {
+app.get('/petition', auth, (req, res) => {
 
     res.render('petition', {
         layout: 'main'
@@ -253,7 +253,7 @@ app.post('/petition', (req, res) => {
 //////////////////////petition//////////////////////
 
 
-app.get("/edit", checkIfLoggedin, (req, res) => {
+app.get("/edit", auth, (req, res) => {
 
    db.getFullProfile(req.session.userId).then(data => {
        res.render("editview", {
@@ -344,7 +344,7 @@ app.post("/edit", (req, res) => {
 //////////////////////signed//////////////////////
 
 
-app.get("/signed", checkIfLoggedin, (req, res) => {
+app.get("/signed", auth, (req, res) => {
    db.getNumber().then(numOfSigners => {
        db.getSig(req.session.signatureId).then(sig => {
            res.render("signed", {
@@ -393,7 +393,7 @@ app.post('/delete-signature', (req, res) => {
 
 
 
-app.get("/signers", checkIfLoggedin, (req, res) => {
+app.get("/signers", auth, (req, res) => {
 db.allSupporter().then(result => {
     return result["rows"]
     console.log("result: ", result);
@@ -419,7 +419,7 @@ app.get('/logout', (req, res) => {
 
 /////////////////signers by city ///////////////////
 
-app.get("/:city", checkIfLoggedin, (req, res) => {
+app.get("/:city", auth, (req, res) => {
    db.allSupporterByCity(req.params.city)
        .then(data => {
            console.log(data);
@@ -437,7 +437,17 @@ app.get("/:city", checkIfLoggedin, (req, res) => {
 
 /////////////////signers by city ///////////////////
 
+function auth(req, res, next) {
+    if (!req.session.userId) {
+        res.redirect("/login");
+    } else {
+        next();
+    }
+}
 
+app.get("*", (req, res) => {
+    res.send("please put in the correct URL");
+});
 
 
 
