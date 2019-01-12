@@ -7,4 +7,4 @@ You can register an account, edit your profile, submit your signature and see ev
 
 
 
-![](https://github.com/Sola26/imageboard/blob/master/2019-01-11_15-35-16%20(1).gif)
+![](https://github.com/Sola26/petition/blob/master/2019-01-12_15-56-57%20(1).gif.gif)
